@@ -1,0 +1,14 @@
+syntax = "proto3";
+package asdf.types;
+option go_package = "github.com/hroi/proto/types";
+
+message Date {
+  int32 year = 1;
+  int32 month = 2;
+  int32 day = 3;
+}
+
+message Daterange {
+  Date from = 1;
+  Date to = 2;
+}

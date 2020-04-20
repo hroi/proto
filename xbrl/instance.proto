@@ -1,0 +1,44 @@
+syntax = "proto3";
+package asdf.xbrl;
+option go_package = "github.com/hroi/proto/xbrl";
+
+import "types.proto";
+
+message Entity {
+  string scheme = 1;
+  string identifier = 2;
+}
+
+message Instance { int64 instance_id = 1; }
+
+message Context {
+  int64 context_id = 1;
+  int64 instance_id = 2;
+  Entity entity = 3;
+  asdf.types.Daterange period = 4;
+  string name = 5;
+}
+
+message Unit {
+  int64 unit_id = 1;
+  int64 instance_id = 2;
+  string name = 3;
+  string measure = 4;
+}
+
+message Fact {
+  int64 fact_id = 1;
+  int64 context_id = 2;
+  int64 unit_id = 3;
+  int64 concept_id = 4;
+  oneof value {
+    float numeric = 5;
+    string text = 6;
+    string date = 7;
+    bool bool = 8;
+    int32 enum_id = 9;
+  };
+  string lang = 10;
+  int32 decimals = 11;
+  int32 precision = 12;
+}

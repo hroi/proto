@@ -1,0 +1,63 @@
+syntax = "proto3";
+package asdf.xbrl;
+option go_package = "github.com/hroi/proto/xbrl";
+
+message Taxonomy {
+  int32 taxonomy_id = 1;
+  string namespace = 2;
+  string prefix = 3;
+}
+
+enum TypeStorage {
+  // number/numeric value
+  NUMERIC = 0;
+  // string
+  TEXT = 1;
+  // date
+  DATE = 2;
+  // true/false
+  BOOL = 4;
+  // choice
+  ENUM = 5;
+};
+
+message Type {
+  int32 type_id = 1;
+  int32 parent_type_id = 2;
+  int32 taxonomy_id = 3;
+  string name = 4;
+}
+
+message Enum {
+  int32 enum_id = 1;
+  int32 type_id = 2;
+  string value = 3;
+}
+
+enum PeriodType {
+  DURATION = 0;
+  INSTANT = 1;
+};
+
+enum Balance {
+  DEBIT = 0;
+  CREDIT = 1;
+}
+
+message Concept {
+  int32 concept_id = 1;
+  int32 taxonomy_id = 2;
+  int32 type_id = 3;
+  string name = 4;
+  PeriodType period_type = 5;
+  Balance balance = 6;
+  bool is_abstract = 7;
+};
+
+message ConceptLabel {
+  int32 label_id = 1;
+  int32 concept_id = 2;
+  string lang = 3;
+  string role = 4;
+  string text = 5;
+};

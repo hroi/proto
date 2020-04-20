@@ -1,0 +1,46 @@
+syntax = "proto3";
+package asdf.xbrl;
+option go_package = "github.com/hroi/proto/xbrl";
+
+import "xbrl/taxonomy.proto";
+import "xbrl/instance.proto";
+
+service XbrlService {
+  // taxonomy
+  rpc GetTaxonomy(GetTaxonomyRequest) returns (GetTaxonomyReply);
+  // instance
+  rpc GetInstance(GetInstanceRequest) returns (GetInstanceReply);
+}
+
+message GetTaxonomyRequest {
+  oneof get_by {
+    int32 taxonomy_id = 1;
+    string taxonomy_prefix = 2;
+    string taxonomy_namespace = 3;
+  }
+}
+
+message GetTaxonomyReply {
+  // the requested taxonomy
+  Taxonomy taxonomy = 1;
+  // related taxonomies
+  map<int32, Taxonomy> taxonomies = 2; // key = taxonomy_id
+  map<int32, Type> types = 3;          // key = type_id
+  map<int32, Enum> enums = 4;          // key = enum_id
+  map<int32, Concept> concepts = 5;    // key = concept_id
+}
+
+message GetInstanceRequest {
+  oneof get_by { int64 instance_id = 1; }
+}
+
+message GetInstanceReply {
+  Instance instance = 1;
+  map<int64, Context> contexts = 2;
+  map<int64, Unit> units = 3;
+  map<int64, Fact> facts = 4;
+  map<int32, Taxonomy> taxonomies = 5;
+  map<int32, Concept> concepts = 6;
+  map<int32, Type> types = 7;
+  map<int32, Enum> enums = 8;
+}

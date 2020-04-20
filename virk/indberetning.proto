@@ -1,0 +1,12 @@
+syntax = "proto3";
+package asdf.virk;
+option go_package = "github.com/hroi/proto/virk";
+
+import "types.proto";
+
+message Indberetning {
+  int64 indberetning_id = 1;
+  string _id = 2;
+  string sagsnummer = 3;
+  asdf.types.Daterange regnskabsperiode = 4;
+};
