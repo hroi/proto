@@ -2,7 +2,7 @@ syntax = "proto3";
 package asdf.xbrl;
 option go_package = "github.com/hroi/proto/xbrl";
 
-import "types.proto";
+import "types/date.proto";
 
 message Entity {
   string scheme = 1;

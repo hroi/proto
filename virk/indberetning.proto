@@ -2,7 +2,7 @@ syntax = "proto3";
 package asdf.virk;
 option go_package = "github.com/hroi/proto/virk";
 
-import "types.proto";
+import "types/date.proto";
 
 message Indberetning {
   int64 indberetning_id = 1;
