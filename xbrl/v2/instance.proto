@@ -1,0 +1,12 @@
+syntax = "proto3";
+package asdf.xbrl.v2;
+option go_package = "github.com/hroi/proto/xbrl/v2";
+
+import "xbrl/v2/entity.proto";
+import "xbrl/v2/date.proto";
+
+message Instance {
+  int64 instance_id = 1;
+  Entity entity = 2;
+  Duration period = 3;
+};

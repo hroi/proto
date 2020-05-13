@@ -1,0 +1,5 @@
+syntax = "proto3";
+package asdf.xbrl.v2;
+option go_package = "github.com/hroi/proto/xbrl/v2";
+
+message Type {};

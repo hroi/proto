@@ -1,0 +1,43 @@
+syntax = "proto3";
+package asdf.xbrl.v2;
+option go_package = "github.com/hroi/proto/xbrl/v2";
+
+import "xbrl/v2/date.proto";
+import "xbrl/v2/concept.proto";
+
+message Scenario {
+  message TypedMember {
+    Concept dimension = 1; // IdentificationOfAuditorDimension
+    Concept type = 2;      // auditorIdentifier
+    string member = 3;     // Revisor2
+  };
+  message ExplicitMember {
+    Concept dimension = 1; // ClassesOfEquityDimension
+    Concept type = 2;      // RetainedEarningsMember
+  };
+  message Member {
+    oneof member {
+      TypedMember typed = 1;
+      ExplicitMember explicit = 2;
+    };
+  }
+  repeated Member members = 1;
+}
+
+message Fact {
+  int64 instance_id = 1;
+  oneof Period {
+    Duration period = 2;
+    Date instant = 3;
+  };
+  Scenario scenario = 4;
+  string unit = 5;
+  string lang = 6;
+  Concept concept = 7;
+  oneof value {
+    string string = 8;
+    double float64 = 9;
+    Date date = 10;
+    string enum = 11;
+  }
+};

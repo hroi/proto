@@ -1,0 +1,14 @@
+syntax = "proto3";
+package asdf.xbrl.v2;
+option go_package = "github.com/hroi/proto/xbrl/v2";
+
+message Date {
+  int32 year = 1;
+  int32 month = 2;
+  int32 day = 3;
+};
+
+message Duration {
+  Date start = 1;
+  Date end = 2;
+}

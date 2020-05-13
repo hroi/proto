@@ -1,9 +1,9 @@
 syntax = "proto3";
-package asdf.xbrl;
-option go_package = "github.com/hroi/proto/xbrl";
+package asdf.xbrl.v1;
+option go_package = "github.com/hroi/proto/xbrl/v1";
 
-import "xbrl/taxonomy.proto";
-import "xbrl/instance.proto";
+import "xbrl/v1/taxonomy.proto";
+import "xbrl/v1/instance.proto";
 
 service XbrlService {
   // taxonomy
